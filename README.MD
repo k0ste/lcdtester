@@ -3,6 +3,7 @@
 ```
 This fork use Mouse Buttons
 Also translated to Russian and native use Python 2.
+With PKGBUILD easy build Arch Linux package.
 ```
 
 This program is just a simple Python script that goes fullscreen and allows
