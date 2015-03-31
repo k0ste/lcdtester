@@ -34,7 +34,7 @@ def main():
     win_size = (inf.current_w, inf.current_h)
     screen = pygame.display.set_mode(win_size)
     pygame.display.set_caption('Monitor Manager')
-    pygame.mouse.set_visible(0)
+    pygame.mouse.set_visible(1)
     pygame.display.toggle_fullscreen()
     background = pygame.Surface(screen.get_size())
     background = background.convert()
@@ -53,12 +53,12 @@ def main():
     font2 = pygame.font.Font(None, 32)
     
     text1 = font2.render('LCD Pixel Tester', True, (255,255,255))
-    text2 = font.render(u'<R>, <G> или <B> для включения этого цвета', True, (255,255,255))
-    text3 = font.render(u'<SPACE> для генерации произвольного цвета', True, (255,255,255))
-    text4 = font.render(u'<ENTER> для включения черного цвета', True, (255,255,255))
-    text5 = font.render(u'<TAB> для переключения между 100% R, G, B, белым, и черным', True, (255,255,255))
-    text6 = font.render(u'<H> показать/скрыть это сообщение', True, (255,255,255))
-    text7 = font.render(u'<ESCAPE> чтобы выйти', True, (255,255,255))
+    text2 = font.render(u'[R], [G] или [B] для включения этого цвета', True, (255,255,255))
+    text3 = font.render(u'[SPACE] для генерации произвольного цвета', True, (255,255,255))
+    text4 = font.render(u'[ENTER] для включения черного цвета', True, (255,255,255))
+    text5 = font.render(u'[TAB]/[MOUSE1] для переключения между 100% R, G, B, белым и черным', True, (255,255,255))
+    text6 = font.render(u'[H]/[MOUSE3] показать/скрыть это сообщение', True, (255,255,255))
+    text7 = font.render(u'[ESCAPE]/[MOUSE2] чтобы выйти', True, (255,255,255))
     
     textRect1 = text1.get_rect()
     textRect2 = text2.get_rect()
@@ -93,6 +93,8 @@ def main():
                 return
             elif event.type == KEYDOWN and event.key == K_ESCAPE:
                 return
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:
+                return
             elif event.type == KEYDOWN and event.key == K_r:
                 r = r + incr
             elif event.type == KEYDOWN and event.key == K_g:
@@ -119,12 +121,31 @@ def main():
                 rgb_cnt = rgb_cnt + 1
                 if rgb_cnt > 4:
                     rgb_cnt = 0
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                if rgb_cnt == 0:
+                    (r,g,b) = (255,0,0)
+                elif rgb_cnt == 1:
+                    (r,g,b) = (0,255,0)
+                elif rgb_cnt == 2:
+                    (r,g,b) = (0,0,255)
+                elif rgb_cnt == 3:
+                    (r,g,b) = (255,255,255)
+                elif rgb_cnt == 4:
+                    (r,g,b) = (0,0,0)
+                rgb_cnt = rgb_cnt + 1
+                if rgb_cnt > 4:
+                    rgb_cnt = 0
             elif event.type == KEYDOWN and event.key == K_h:
                 if help_enabled:
                     help_enabled = False
                 else:
                     help_enabled = True
-        
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 2:
+                if help_enabled:
+                    help_enabled = False
+                else:
+                    help_enabled = True
+                    
         if r > 255:
             r = 0
         if g > 255:

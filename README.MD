@@ -1,15 +1,19 @@
 #LCDtest
 
 ```
-This fork translated to Russian and native use Python 2.
+This fork use Mouse Buttons
+Also translated to Russian and native use Python 2.
 ```
 
 This program is just a simple Python script that goes fullscreen and allows
 you to change the color shown on the fullscreen in a convenient way.
 
 Requirements:
+
     - Python2
+    
     - pygame
+
 
 Installation/Usage:
 
