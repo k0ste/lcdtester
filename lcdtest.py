@@ -23,7 +23,6 @@
 import os, sys, random
 import pygame
 from pygame.locals import *
-from optparse import OptionParser
         
 def main():
    

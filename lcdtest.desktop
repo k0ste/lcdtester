@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=LCDtest
+Name[ru_RU]=LCDtest
+Comment=Checl LCD for dead pixels
+Comment[ru_RU]=Проверить LCD дисплеи на мертвые пиксели
+Exec=/usr/bin/lcdtest.py
+Icon=lcdtest
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Utility;
